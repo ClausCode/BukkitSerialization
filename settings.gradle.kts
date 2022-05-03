@@ -1,1 +1,1 @@
-rootProject.name = "JsonBukkitSerialization"
+rootProject.name = "BukkitSerialization"

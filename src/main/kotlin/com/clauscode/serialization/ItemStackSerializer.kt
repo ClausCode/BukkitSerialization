@@ -11,13 +11,7 @@ object ItemStackSerializer: KSerializer<ItemStack> {
 
     override fun serialize(encoder: Encoder, value: ItemStack) {
         val model = ItemStackModel()
-        model.materialData = value.data
-        model.amount = value.amount
-        model.displayName = value.itemMeta.displayName
-        model.lore = value.itemMeta.lore
-        model.enchantments = value.enchantments
-        model.flags = value.itemMeta.itemFlags
-
+        model.copyStack(value)
         encoder.encodeSerializableValue(ItemStackModel.serializer(), model)
     }
 

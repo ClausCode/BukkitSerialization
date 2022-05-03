@@ -24,6 +24,15 @@ class ItemStackModel {
     var enchantments: Map<@Serializable(with = EnchantmentSerializer::class) Enchantment, Int> = HashMap()
     var flags: Set<ItemFlag> = HashSet()
 
+    fun copyStack(stack: ItemStack) {
+        materialData = stack.data
+        amount = stack.amount
+        displayName = stack.itemMeta.displayName
+        lore = stack.itemMeta.lore
+        enchantments = stack.enchantments
+        flags = stack.itemMeta.itemFlags
+    }
+
     fun buildStack(): ItemStack {
         val stack = ItemStack(materialData.itemType, amount, materialData.data.toShort())
         val meta = stack.itemMeta
